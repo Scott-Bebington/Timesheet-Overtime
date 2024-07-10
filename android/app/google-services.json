@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "41265234984",
+    "project_id": "timesheetovertime",
+    "storage_bucket": "timesheetovertime.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41265234984:android:bb6cba58ccc785a3ea611d",
+        "android_client_info": {
+          "package_name": "timesheetovertime.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41265234984-ijf9dhjforu7efc9cs1b1r2u1kbjnbk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJLgE1rib29cZeGDfKP1r3Ly1LNiT-vSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41265234984-ijf9dhjforu7efc9cs1b1r2u1kbjnbk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
