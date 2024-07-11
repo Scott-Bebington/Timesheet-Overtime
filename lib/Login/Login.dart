@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:timesheet_overtime/Login/DesktopLogin.dart';
 import 'package:timesheet_overtime/Login/MobileLogin.dart';
+import 'package:timesheet_overtime/Signup/Signup.dart';
 
 class LoginVAF {
   static TextEditingController emailController = TextEditingController();
@@ -67,6 +68,19 @@ class LoginVAF {
       }
       rethrow;
     }
+  }
+
+  static void navigateToSignup(context) {
+    if (kDebugMode) {
+      print("Navigate to Signup");
+    }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Signup(),
+      ),
+    );
   }
 }
 

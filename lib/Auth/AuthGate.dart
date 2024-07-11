@@ -1,8 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:timesheet_overtime/Dashboard/Dashboard.dart';
+import 'package:timesheet_overtime/GlobalVariables.dart';
 import 'package:timesheet_overtime/Login/Login.dart';
+import 'package:timesheet_overtime/Navbar/Navbar.dart';
+
 
 class AuthGate extends StatefulWidget {
   const AuthGate({super.key});
@@ -18,13 +22,28 @@ class _AuthGateState extends State<AuthGate> {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ElevatedButton(
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-              },
-              child: Text("Sign Out"));
+          return Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: backgroundColor,
+            child: Stack(
+              children: [
+                Navbar(),
+              ],
+            ),
+          );
         }
-        return Login();
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: backgroundColor,
+          child: Stack(
+            children: [
+              Dashboard(),
+              Navbar(),
+            ],
+          ),
+        );
       },
     );
   }

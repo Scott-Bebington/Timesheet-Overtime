@@ -6,14 +6,14 @@ import 'package:timesheet_overtime/GlobalVariables.dart';
 import 'package:timesheet_overtime/Login/Login.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
 
-class DesktopLogin extends StatefulWidget {
-  const DesktopLogin({super.key});
+class DesktopSignup extends StatefulWidget {
+  const DesktopSignup({super.key});
 
   @override
-  State<DesktopLogin> createState() => _DesktopLoginState();
+  State<DesktopSignup> createState() => _DesktopSignupState();
 }
 
-class _DesktopLoginState extends State<DesktopLogin> {
+class _DesktopSignupState extends State<DesktopSignup> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -113,10 +113,6 @@ class _DesktopLoginState extends State<DesktopLogin> {
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {},
-              child: Text("Forgot Password?", style: TextStyle(color: Colors.grey)),
-            ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -147,7 +143,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
               onPressed: () {
                 LoginVAF.navigateToSignup(context);
               },
-              child: Text("Don't have an account? Sign Up", style: TextStyle(color: Colors.grey)),
+              child: Text("Already have an account? Sign in", style: TextStyle(color: Colors.grey)),
             ),
             Row(
               children: [
