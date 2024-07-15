@@ -7,7 +7,6 @@ import 'package:timesheet_overtime/GlobalVariables.dart';
 import 'package:timesheet_overtime/Login/Login.dart';
 import 'package:timesheet_overtime/Navbar/Navbar.dart';
 
-
 class AuthGate extends StatefulWidget {
   const AuthGate({super.key});
 
