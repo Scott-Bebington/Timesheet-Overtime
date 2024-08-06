@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:timesheet_overtime/Dashboard/Dashboard.dart';
+import 'package:timesheet_overtime/Projects/Projects.dart';
 import 'package:timesheet_overtime/GlobalVariables.dart';
 import 'package:timesheet_overtime/Login/Login.dart';
 import 'package:timesheet_overtime/Navbar/Navbar.dart';
@@ -38,8 +38,8 @@ class _AuthGateState extends State<AuthGate> {
           color: backgroundColor,
           child: Stack(
             children: [
-              Dashboard(),
-              Navbar(),
+              Projects(),
+              // Navbar(),
             ],
           ),
         );

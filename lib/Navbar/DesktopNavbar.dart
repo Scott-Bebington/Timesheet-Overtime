@@ -15,6 +15,7 @@ class _DesktopNavbarState extends State<DesktopNavbar> with SingleTickerProvider
   late AnimationController _animationController;
   late Animation<double> _animation;
   bool isExpanded = false;
+  bool areLogoutandToggleThemeVisible = false;
 
   @override
   void initState() {
@@ -32,11 +33,15 @@ class _DesktopNavbarState extends State<DesktopNavbar> with SingleTickerProvider
     super.dispose();
   }
 
-  Widget navbarItem(String text, IconData icon) {
+  Widget navbarItem({
+    required String text,
+    IconData? icon,
+    Function()? onPressed,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(left: 2.75),
       child: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: Row(
           children: [
             Icon(
@@ -54,7 +59,7 @@ class _DesktopNavbarState extends State<DesktopNavbar> with SingleTickerProvider
                   return Text(
                     value.text,
                     style: TextStyle(
-                      color: primaryColor,
+                      color: textColor,
                       fontSize: desktopVariables.bodyTextSize,
                     ),
                   );
@@ -79,6 +84,7 @@ class _DesktopNavbarState extends State<DesktopNavbar> with SingleTickerProvider
       },
       onExit: (_) {
         setState(() {
+          areLogoutandToggleThemeVisible = false;
           isExpanded = false;
         });
         _animationController.reverse();
@@ -90,7 +96,7 @@ class _DesktopNavbarState extends State<DesktopNavbar> with SingleTickerProvider
             margin: EdgeInsets.all(desktopVariables.padding),
             padding: EdgeInsets.all(desktopVariables.padding),
             decoration: BoxDecoration(
-              color: cardColor,
+              color: backgroundColor,
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 color: primaryColor,
@@ -100,23 +106,83 @@ class _DesktopNavbarState extends State<DesktopNavbar> with SingleTickerProvider
             width: 75 + _animation.value,
             height: double.infinity,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                navbarItem("Dashboard", Icons.space_dashboard_outlined),
-                SizedBox(height: 10),
-                Divider(),
-                SizedBox(height: 10),
-                navbarItem("Timesheet", Icons.calendar_month_outlined),
-                SizedBox(height: 10),
-                navbarItem("Overtime", Icons.more_time),
-                SizedBox(height: 10),
-                Divider(),
-                SizedBox(height: 10),
-                navbarItem("Location", Icons.location_on_outlined),
-                Spacer(),
-                navbarItem("Toggle theme", Icons.light_mode_outlined),
-                SizedBox(height: 20),
-                navbarItem("Logout", Icons.logout),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        navbarItem(
+                          text: "Projects",
+                          icon: Icons.space_dashboard_outlined,
+                          onPressed: () {
+                            print("Navigate to projects");
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        Divider(),
+                        SizedBox(height: 10),
+                        navbarItem(
+                          text: "Timesheet",
+                          icon: Icons.calendar_month_outlined,
+                          onPressed: () {
+                            print("Navigate to timesheet");
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        navbarItem(
+                          text: "Overtime",
+                          icon: Icons.more_time,
+                          onPressed: () {
+                            print("Navigate to overtime");
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        Divider(),
+                        SizedBox(height: 10),
+                        navbarItem(
+                          text: "Location",
+                          icon: Icons.location_on_outlined,
+                          onPressed: () {
+                            print("Navigate to location");
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    if (areLogoutandToggleThemeVisible) ...[
+                      SizedBox(height: 10),
+                      navbarItem(
+                        text: "Toggle theme",
+                        icon: Icons.light_mode_outlined,
+                        onPressed: () {
+                          toggleTheme();
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      navbarItem(
+                        text: "Logout",
+                        icon: Icons.logout,
+                        onPressed: () {
+                          print("Logout pressed");
+                        },
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                    navbarItem(
+                      text: "Scott Bebington",
+                      icon: Icons.person,
+                      onPressed: () {
+                        setState(() {
+                          areLogoutandToggleThemeVisible = !areLogoutandToggleThemeVisible;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ],
             ),
           );

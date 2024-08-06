@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:timesheet_overtime/Auth/AuthGate.dart';
+import 'package:timesheet_overtime/GlobalVariables.dart';
 import 'package:timesheet_overtime/firebase_options.dart';
 
 Future<void> main() async {
@@ -10,13 +11,26 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const TimesheetApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TimesheetApp extends StatefulWidget {
+  const TimesheetApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<TimesheetApp> createState() => _TimesheetAppState();
+}
+
+class _TimesheetAppState extends State<TimesheetApp> {
+
+  @override
+  void initState() {
+    super.initState();
+    refresh.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
